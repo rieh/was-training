@@ -26,7 +26,7 @@
       <dependency>
         <groupId>com.h2database</groupId>
         <artifactId>h2</artifactId>
-        <version>1.3.171</version>
+        <version>1.3.176</version>
       </dependency>
       <dependency>
         <groupId>org.apache.httpcomponents</groupId>
@@ -161,10 +161,10 @@
       <id>was85x</id>
       <properties>
         <was85x.home.dir>/home/rsynek/training/WAS/playground/WebSphere</was85x.home.dir>
-        <was85x.profile.dir>${was85x.home.dir}/profiles/cargo</was85x.profile.dir>
+        <sql.file>"Path to training folder"/init.sql</sql.file>
         <container.port>9080</container.port>
         <datasource.jndi>jdbc/testds</datasource.jndi>
-        <datasource.connection.url>jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;INIT=RUNSCRIPT FROM '~/init.sql'</datasource.connection.url>
+        <datasource.connection.url>jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;INIT=RUNSCRIPT FROM '${sql.file}';</datasource.connection.url>
         <datasource.username>sa</datasource.username>
         <datasource.password>sa</datasource.password>
         <datasource.driver.class>org.h2.jdbcx.JdbcDataSource</datasource.driver.class>
@@ -189,7 +189,6 @@
                 </container>
                 <configuration>
                   <type>standalone</type>
-                  <home>${was85x.profile.dir}</home>
                   <properties>
                     <cargo.websphere.administrator.password>admin</cargo.websphere.administrator.password>
                     <cargo.websphere.administrator.user>admin</cargo.websphere.administrator.user>

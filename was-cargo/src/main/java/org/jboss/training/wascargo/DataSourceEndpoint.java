@@ -73,12 +73,16 @@ public class DataSourceEndpoint {
             handleError(ex);
         } finally {
             try {
-                stmt.close();
+                if(stmt != null) {
+                    stmt.close();
+                }
             } catch (SQLException ex) {
                 handleError(ex);
             }
             try {
-                conn.close();
+                if(conn != null) {
+                    conn.close();
+                }
             } catch (SQLException ex) {
                 handleError(ex);
             }
